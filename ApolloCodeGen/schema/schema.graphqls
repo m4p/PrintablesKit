@@ -1,0 +1,103 @@
+type PrintType {
+    id: ID!
+    name: String!
+    images: [PrintImageType!]
+    nsfw: Boolean!
+    hasModel: Boolean!
+    liked: Boolean
+    likesCount: Int!
+    downloadCount: Int!
+    datePublished: String!
+    summary: String
+    "Description as HTML"
+    description: String
+    user: UserType
+    makesCount: Int!
+    tags: [TagType!]
+    pdfFilePath: String
+    gcodes: [GCodeType!]
+    stls: [STLType!]
+    slas: [SLAType!]
+}
+
+type SearchPrintType {
+    id: ID!
+    name: String!
+    image: PrintImageType!
+    nsfw: Boolean!
+    hasModel: Boolean!
+    liked: Boolean
+    likesCount: Int!
+    downloadCount: Int!
+    datePublished: String!
+}
+
+type PrintImageType {
+    id: ID!
+    filePath: String!
+    rotation: Int!
+}
+
+type TagType {
+    id: ID!
+    name: String!
+}
+  
+type STLType {
+    id: ID!
+    name: String!
+    filePath: String!
+    fileSize: Int!
+    filePreviewPath: String!
+}
+  
+type GCodeType {
+    id: ID!
+    name: String!
+    filePath: String!
+    fileSize: Int!
+    filePreviewPath: String!
+}
+  
+type SLAType {
+    id: ID!
+    name: String!
+    filePath: String!
+    fileSize: Int!
+    filePreviewPath: String!
+}
+  
+type ListSearchPrintType {
+    items: [SearchPrintType!]
+}
+
+"""
+null is bestmatch
+"""
+enum SearchChoicesEnum {
+    latest
+    makes_count
+    rating
+    popular
+}
+
+type UserType {
+    id: ID!
+    publicUsername: String!
+    avatarFilePath: String!
+    handle: String!
+    company: Boolean!
+    verified: Boolean!
+}
+
+type Query {
+    searchPrints( 
+        query: String
+        printType: String 
+        limit: Int 
+        offset: Int
+        ordering: SearchChoicesEnum
+    ): ListSearchPrintType
+    
+    print(id: ID!): PrintType
+}

@@ -1,0 +1,23 @@
+query SearchPrints($query: String!, $limit: Int, $offset: Int, $ordering: SearchChoicesEnum) { 
+  searchPrints( 
+	query: $query 
+	limit: $limit 
+	offset: $offset 
+	ordering: $ordering 
+  ) { 
+	items { 
+		id
+		name
+        image {
+            filePath
+            rotation
+        }
+        nsfw
+        hasModel
+        liked
+        likesCount
+        downloadCount
+        datePublished
+	} 
+  } 
+} 

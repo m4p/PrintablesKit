@@ -1,0 +1,55 @@
+query PrintProfile($id: ID!) {
+    print(id: $id) {
+        id
+        name
+        user {
+            id
+            publicUsername
+            avatarFilePath
+            handle
+            company
+            verified
+        }
+        images {
+            id
+            filePath
+            rotation
+        }
+        nsfw
+        hasModel
+        liked
+        likesCount
+        downloadCount
+        datePublished
+        summary
+        description
+        makesCount
+        tags {
+            id
+            name
+        }
+        pdfFilePath
+        gcodes {
+            id
+            name
+            filePath
+            fileSize
+            filePreviewPath
+        }
+        stls {
+            id
+            name
+            filePath
+            fileSize
+            filePreviewPath
+        }
+        slas{
+            id
+            name
+            filePath
+            fileSize
+            filePreviewPath
+        }
+    }
+}
+

@@ -1,0 +1,2 @@
+cd ApolloCodegen
+swift run ApolloCodegen generate
